@@ -3,7 +3,7 @@
  *
  *       Filename:  mysql.h
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  2014年07月28日 10时31分11秒
@@ -11,7 +11,7 @@
  *       Compiler:  gcc
  *
  *         Author:  jianxi sun (jianxi), ycsunjane@gmail.com
- *   Organization:  
+ *   Organization:
  *
  * =====================================================================================
  */
@@ -19,8 +19,9 @@
 #define __SQL_H__
 
 #ifndef DISABLE_MYSQL
-#include <my_global.h>
-#include <mysql.h>
+#include "mysql/my_global.h"
+#include "mysql/mysql.h"
+#include "mysql/mysqld_error.h"
 #include "log.h"
 
 #define SQL 		MYSQL
@@ -40,9 +41,9 @@
 extern MYSQL sql;
 int sql_init();
 void sql_close(SQL *sql);
-void sql_insert(SQL *sql, uint64_t climac, 
+void sql_insert(SQL *sql, uint64_t climac,
 	double x, double y, double z);
-void sql_usr_insert(SQL *sql, uint64_t climac, 
+void sql_usr_insert(SQL *sql, uint64_t climac,
 	struct timeval first_time, struct timeval last_time);
 #endif
 #endif /* __SQL_H__ */

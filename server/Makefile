@@ -6,7 +6,7 @@ CFLAGS+=-lm -lpthread
 LDFLAGS+=-lm -lpthread
 
 serprobe:  $(wildcard *.c) $(wildcard *.h)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+	$(CC) $^ -o $@ $(CFLAGS) $(LDFLAGS)
 
 clean:
 	-@rm  -rf serprobe *.o

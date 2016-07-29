@@ -3,7 +3,7 @@
  *
  *       Filename:  cmdarg.h
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  2014年09月09日 15时45分15秒
@@ -11,7 +11,7 @@
  *       Compiler:  gcc
  *
  *         Author:  jianxi sun (jianxi), ycsunjane@gmail.com
- *   Organization:  
+ *   Organization:
  *
  * =====================================================================================
  */
@@ -19,11 +19,11 @@
 #define __CMDARG_H__
 #include <limits.h>
 
-#define SERCONF 	"/etc/clipos/serprobe.conf"
+#define SERCONF 	"../config/serprobe.conf"
 #define ENTRY_LEN 	(PATH_MAX)
 
 struct cmdarg_t {
-#define APCONFFILE 	"/etc/clipos/ap.conf"
+#define APCONFFILE 	"../config/ap.conf"
 #define APCONF 		"ap_sample_config_file"
 	char apconf[PATH_MAX];
 #define MINSIG 		"minimal_signal"
@@ -42,7 +42,7 @@ struct cmdarg_t {
 	int  drift;
 };
 
-extern int debug; 
+extern int debug;
 extern int daemon_mode;
 #define CONFIG_SET(name)
 extern struct cmdarg_t argument;

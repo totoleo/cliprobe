@@ -3,7 +3,7 @@
  *
  *       Filename:  mysql.c
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  2014年07月28日 10时04分12秒
@@ -11,14 +11,13 @@
  *       Compiler:  gcc
  *
  *         Author:  jianxi sun (jianxi), ycsunjane@gmail.com
- *   Organization:  
+ *   Organization:
  *
  * ============================================================================
  */
 #ifndef DISABLE_MYSQL
 #include <stdio.h>
 #include <stdint.h>
-#include <mysqld_error.h>
 #include <string.h>
 #include "sql.h"
 
@@ -46,12 +45,12 @@ int sql_init(SQL *sql)
 	}
 
 	mysql_options(sql, MYSQL_READ_DEFAULT_GROUP, "serprobe");
-	state = mysql_real_connect(sql, NULL, NULL, NULL, NULL, 0, NULL, 0);
+	state = mysql_real_connect(sql, NULL, "root", "root", NULL, 0, NULL, 0);
 	if(state == NULL) {
 		pr_sqlerr();
 		exit(-1);
 	}
-	
+
 	ret = mysql_query(sql, CLIDB);
 	if(ret) {
 		pr_sqlerr();
@@ -103,7 +102,7 @@ static int __double_end(char *p, double val)
 }
 
 static char insert_buffer[1024] = INSERTINFO;
-void sql_insert(SQL *sql, uint64_t climac, 
+void sql_insert(SQL *sql, uint64_t climac,
 	double x, double y, double z)
 {
 	int ret;
@@ -129,7 +128,7 @@ int __datetime(char *p, time_t *time)
 {
 	int ret;
 	char buff[22];
-	strftime(buff, 22, 
+	strftime(buff, 22,
 		"'%Y-%m-%d %H:%M:%S'", localtime(time));;
 	ret = sprintf(p, "%s,", buff);
 	return ret;
@@ -139,15 +138,15 @@ int __datetime_end(char *p, time_t *time)
 {
 	int ret;
 	char buff[22];
-	strftime(p, 22, 
+	strftime(p, 22,
 		"'%Y-%m-%d %H:%M:%S'", localtime(time));;
 	ret = sprintf(p, "%s);", buff);
 	return ret;
 }
 
 static char insert_usr[1024] = INSERTUSER;
-void sql_usr_insert(SQL *sql, uint64_t climac, 
-	struct timeval first_time, struct timeval last_time)	
+void sql_usr_insert(SQL *sql, uint64_t climac,
+	struct timeval first_time, struct timeval last_time)
 {
 	time_t ftime, ltime;
 
