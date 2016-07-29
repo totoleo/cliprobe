@@ -31,7 +31,10 @@ server端根据汇报数据计算client位置
 
 编译执行
 --------------------
-
+环境配置
+Ubuntu 14.04 
+  sudo apt-get install mysql-server libmysqlclient-dev mytop mysql-client
+  
 make
 只生成client
 
