@@ -19,7 +19,7 @@
 #define __CMDARG_H__
 #include <limits.h>
 
-#define SERCONF 	"../config/serprobe.conf"
+#define SERCONF 	"./config/serprobe.conf"
 #define ENTRY_LEN 	(PATH_MAX)
 
 struct cmdarg_t {
